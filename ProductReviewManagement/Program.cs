@@ -13,7 +13,8 @@ namespace ProductReviewManagement
         {
             List<ProductReview> productReviews = new List<ProductReview>();
             AddDefaultValues(productReviews);
-            RetrieveProductIdAndReview(productReviews);
+            //RetrieveProductIdAndReview(productReviews);
+            SkipTop5Records(productReviews);
             Console.ReadKey();
         }
         static public void AddDefaultValues(List<ProductReview> productReviews)
@@ -60,6 +61,7 @@ namespace ProductReviewManagement
             return outputList;
 
         }
+
         static public ArrayList RatingGreaterThan3(List<ProductReview> productReviews)
         {
             ArrayList outputList = new ArrayList();
@@ -105,6 +107,22 @@ namespace ProductReviewManagement
                 outputList.Add(row.ToString());
             }
             return outputList;
+        }
+
+        static public ArrayList SkipTop5Records(List<ProductReview> productReviews)
+        {
+            ArrayList outputList = new ArrayList();
+            var highestRatedRows = (from rec in productReviews
+                                   select rec).Skip(5);
+                                  
+            foreach (var row in highestRatedRows)
+            {
+                Console.WriteLine(row.ToString());
+                outputList.Add(row.ToString());
+            }
+
+            return outputList;
+
         }
     }
 }
