@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +47,7 @@ namespace ProductReviewManagement
             productReviews.Add(new ProductReview() { productId = 5, userId = 1, rating = 5, isLike = "Yes", review = "Awesome" });
             productReviews.Add(new ProductReview() { productId = 9, userId = 1, rating = 5, isLike = "Yes", review = "Does the work" });
         }
+
         static public ArrayList GetTop3HighestRatedRecords(List<ProductReview> productReviews)
         {
             ArrayList outputList = new ArrayList();
@@ -124,5 +126,7 @@ namespace ProductReviewManagement
             return outputList;
 
         }
+
+        DataTable datatable = new DataTable();
     }
 }
