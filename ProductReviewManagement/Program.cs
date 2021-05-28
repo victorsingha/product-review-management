@@ -11,6 +11,10 @@ namespace ProductReviewManagement
     {
         static void Main(string[] args)
         {
+            List<ProductReview> productReviews = new List<ProductReview>();
+            AddDefaultValues(productReviews);
+            RetrieveProductIdAndReview(productReviews);
+            Console.ReadKey();
         }
         static public void AddDefaultValues(List<ProductReview> productReviews)
         {
@@ -81,6 +85,20 @@ namespace ProductReviewManagement
                                productId2 = g.Key,
                                ReviewCount = g.Count()
                            });
+            foreach (var row in records)
+            {
+                Console.WriteLine(row.ToString());
+                outputList.Add(row.ToString());
+            }
+            return outputList;
+        }
+       
+        static public ArrayList RetrieveProductIdAndReview(List<ProductReview> productReviews)
+        {
+            ArrayList outputList = new ArrayList();
+            var records = from rec in productReviews
+                          select new { rec.productId, rec.review };
+                         
             foreach (var row in records)
             {
                 Console.WriteLine(row.ToString());
