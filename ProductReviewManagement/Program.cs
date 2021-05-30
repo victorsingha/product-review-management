@@ -19,7 +19,8 @@ namespace ProductReviewManagement
             //RetrieveProductIdAndReview(productReviews);
             //SkipTop5Records(productReviews);
             program.AddDataInDataTable();
-            program.GetDatatableIsLikeValueYes();
+            //program.GetDatatableIsLikeValueYes();
+            program.AverateRatingOfProductID();
             Console.ReadKey();
         }
         static public void AddDefaultValues(List<ProductReview> productReviews)
@@ -179,6 +180,21 @@ namespace ProductReviewManagement
             {
                 Console.Write(id.ItemArray[0]);
                 Console.WriteLine(id.ItemArray[3]);
+            }
+        }
+
+        public void AverateRatingOfProductID()
+        {
+            var results = from row in datatable.AsEnumerable()
+                          group row by row.Field<int>("productID") into grp
+                          select new
+                          {
+                              productID = grp.Key,
+                              averageRating = grp.Average(o => o.Field<int>("rating"))
+                          };
+            foreach(var row in results)
+            {
+                Console.WriteLine(row.productID +" = "+ row.averageRating);
             }
         }
     }
