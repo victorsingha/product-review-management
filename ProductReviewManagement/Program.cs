@@ -20,7 +20,8 @@ namespace ProductReviewManagement
             //SkipTop5Records(productReviews);
             program.AddDataInDataTable();
             //program.GetDatatableIsLikeValueYes();
-            program.AverateRatingOfProductID();
+            //program.AverateRatingOfProductID();
+            program.NiceCommnent();
             Console.ReadKey();
         }
         static public void AddDefaultValues(List<ProductReview> productReviews)
@@ -196,6 +197,18 @@ namespace ProductReviewManagement
             {
                 Console.WriteLine(row.productID +" = "+ row.averageRating);
             }
+        }
+
+        public void NiceCommnent()
+        {
+            var results = from row in datatable.AsEnumerable()
+                          where row.Field<string>("review") == "Nice"
+                          select row;
+            foreach(var row in results)
+            {
+                Console.WriteLine(row.ItemArray[0] + " " + row.ItemArray[1] + " " + row.ItemArray[2] + " " + row.ItemArray[3] + " " + row.ItemArray[4]);
+            }
+                           
         }
     }
 }
