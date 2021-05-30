@@ -21,7 +21,8 @@ namespace ProductReviewManagement
             program.AddDataInDataTable();
             //program.GetDatatableIsLikeValueYes();
             //program.AverateRatingOfProductID();
-            program.NiceCommnent();
+            //program.NiceCommnent();
+            program.UserId10Data();
             Console.ReadKey();
         }
         static public void AddDefaultValues(List<ProductReview> productReviews)
@@ -169,6 +170,12 @@ namespace ProductReviewManagement
             datatable.Rows.Add(5, 1, 5, "Yes","Awesome");
             datatable.Rows.Add(5, 1, 5, "Yes","Awesome");
             datatable.Rows.Add(9, 1, 5, "Yes","Does the work");
+
+            datatable.Rows.Add(9, 10, 5, "Yes", "Nice");
+            datatable.Rows.Add(9, 10, 2, "Yes", "Awesome");
+            datatable.Rows.Add(1, 10, 3, "Yes", "Great");
+            datatable.Rows.Add(1, 10, 1, "Yes", "Okay");
+            datatable.Rows.Add(1, 10, 3, "Yes", "Okay");
         }
 
         public void GetDatatableIsLikeValueYes()
@@ -209,6 +216,19 @@ namespace ProductReviewManagement
                 Console.WriteLine(row.ItemArray[0] + " " + row.ItemArray[1] + " " + row.ItemArray[2] + " " + row.ItemArray[3] + " " + row.ItemArray[4]);
             }
                            
+        }
+
+        public void UserId10Data()
+        {
+            var results = from row in datatable.AsEnumerable()
+                          where row.Field<int>("userID") == 10
+                          orderby row.Field<int>("rating") descending
+                          select row;
+            foreach(var row in results)
+            {
+                Console.WriteLine(row.ItemArray[0] + " " + row.ItemArray[1] + " " + row.ItemArray[2] + " " + row.ItemArray[3] + " " + row.ItemArray[4]);
+            }
+                        
         }
     }
 }
