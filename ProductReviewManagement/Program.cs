@@ -14,8 +14,12 @@ namespace ProductReviewManagement
         {
             List<ProductReview> productReviews = new List<ProductReview>();
             AddDefaultValues(productReviews);
+            Program program = new Program();
+
             //RetrieveProductIdAndReview(productReviews);
-            SkipTop5Records(productReviews);
+            //SkipTop5Records(productReviews);
+            program.AddDataInDataTable();
+            program.GetDatatableIsLikeValueYes();
             Console.ReadKey();
         }
         static public void AddDefaultValues(List<ProductReview> productReviews)
@@ -163,6 +167,19 @@ namespace ProductReviewManagement
             datatable.Rows.Add(5, 1, 5, "Yes","Awesome");
             datatable.Rows.Add(5, 1, 5, "Yes","Awesome");
             datatable.Rows.Add(9, 1, 5, "Yes","Does the work");
+        }
+
+        public void GetDatatableIsLikeValueYes()
+        {
+            var results = from myRow in datatable.AsEnumerable()
+                          where myRow.Field<string>("isLike") == "Yes"
+                          select myRow;
+            Console.WriteLine(results);
+            foreach(var id in results)
+            {
+                Console.Write(id.ItemArray[0]);
+                Console.WriteLine(id.ItemArray[3]);
+            }
         }
     }
 }
