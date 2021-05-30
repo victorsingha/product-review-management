@@ -128,5 +128,41 @@ namespace ProductReviewManagement
         }
 
         DataTable datatable = new DataTable();
+
+        public void AddDataInDataTable()
+        {
+            datatable.Columns.Add("productId", typeof(int));
+            datatable.Columns.Add("userId", typeof(int));
+            datatable.Columns.Add("rating", typeof(int));
+            datatable.Columns.Add("isLike", typeof(string));
+            datatable.Columns.Add("review", typeof(string));
+
+            datatable.Rows.Add(1, 1, 5, "Yes","Awesome");
+            datatable.Rows.Add(1, 2, 3, "Yes","Awesome");
+            datatable.Rows.Add(1, 3, 4, "Yes","Awesome");
+            datatable.Rows.Add(1, 4, 3, "Yes","Nice");
+            datatable.Rows.Add(1, 5, 4, "Yes","Good");
+            datatable.Rows.Add(2, 1, 1, "No", "Unsatifactory");
+            datatable.Rows.Add(2, 2, 3, "Yes","Good");
+            datatable.Rows.Add(2, 3, 4, "Yes","Awesome");
+            datatable.Rows.Add(2, 4, 3, "Yes","Nice");
+            datatable.Rows.Add(2, 5, 4, "Yes","Good");
+            datatable.Rows.Add(3, 1, 5, "Yes","Awesome");
+            datatable.Rows.Add(3, 2, 3, "Yes","Awesome");
+            datatable.Rows.Add(3, 3, 4, "Yes","Awesome");
+            datatable.Rows.Add(3, 4, 3, "Yes","Nice" );
+            datatable.Rows.Add(3, 5, 4, "Yes","Good" );
+            datatable.Rows.Add(4, 1, 1, "No", "Unsatifactory");
+            datatable.Rows.Add(4, 2, 2, "No", "Bad");
+            datatable.Rows.Add(4, 3, 2, "No", "Worst");
+            datatable.Rows.Add(4, 4, 3, "No", "Not good");
+            datatable.Rows.Add(4, 5, 2, "No", "Okay");
+            datatable.Rows.Add(5, 1, 5, "Yes","Awesome");
+            datatable.Rows.Add(5, 1, 5, "Yes","Awesome");
+            datatable.Rows.Add(5, 1, 5, "Yes","Awesome");
+            datatable.Rows.Add(5, 1, 5, "Yes","Awesome");
+            datatable.Rows.Add(5, 1, 5, "Yes","Awesome");
+            datatable.Rows.Add(9, 1, 5, "Yes","Does the work");
+        }
     }
 }
